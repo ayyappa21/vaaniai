@@ -1,15 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
+import { API_ENDPOINTS } from "@/lib/apiConfig";
 
 export async function POST(req: NextRequest) {
   const body = await req.json().catch(() => ({}));
 
   try {
-    const backendUrl = (process.env.BACKEND_URL || process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000").replace(/\/$/, "");
-    const res = await fetch(`${backendUrl}/api/extract-text`, {
+    const res = await fetch(API_ENDPOINTS.extractText(), {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
-      signal: AbortSignal.timeout(6000),
+      signal: AbortSignal.timeout(8000),
     });
     if (res.ok) {
       return NextResponse.json(await res.json());

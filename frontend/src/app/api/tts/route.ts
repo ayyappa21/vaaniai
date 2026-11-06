@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { VOICES, Voice } from "@/lib/data";
+import { API_ENDPOINTS } from "@/lib/apiConfig";
 
 function generateNodeOfflineWav(text: string, voice: Voice, speed: number, pitch: number, emotion: string) {
   const words = text.split(/\s+/).filter(Boolean);
@@ -93,12 +94,11 @@ export async function POST(req: NextRequest) {
   const voice = VOICES.find((v) => v.id === body.voice_id) || VOICES[0];
 
   try {
-    const backendUrl = (process.env.BACKEND_URL || process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000").replace(/\/$/, "");
-    const res = await fetch(`${backendUrl}/api/tts`, {
+    const res = await fetch(API_ENDPOINTS.tts(), {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
-      signal: AbortSignal.timeout(20000),
+      signal: AbortSignal.timeout(25000),
     });
 
     if (res.ok) {

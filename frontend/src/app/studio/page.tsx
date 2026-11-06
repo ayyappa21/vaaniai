@@ -264,7 +264,7 @@ export default function StudioPage() {
       setCurrentTime(0);
 
       // Stable download filename for this audio generation
-      const safeId = result.id ? result.id.replace(/[^a-zA-Z0-9_-]/g, "") : `audio-${Date.now()}`;
+      const safeId = result.id ? result.id.replace(/[^a-zA-Z0-9_-]/g, "") : "audio-latest";
       setDownloadFilename(`vaaniai-${selectedLanguage}-${safeId}.wav`);
 
       // Save to localStorage history

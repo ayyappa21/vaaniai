@@ -280,3 +280,38 @@ export async function extractTextFromFile(
     reader.readAsDataURL(file);
   });
 }
+
+export async function fetchLanguages(): Promise<any[]> {
+  try {
+    const res = await fetch("/api/languages");
+    if (res.ok) {
+      const data = await res.json();
+      return data.languages || [];
+    }
+  } catch (e) {}
+  return LANGUAGES;
+}
+
+export async function fetchVoices(lang?: string): Promise<any[]> {
+  try {
+    const url = lang ? `/api/voices?language=${encodeURIComponent(lang)}` : "/api/voices";
+    const res = await fetch(url);
+    if (res.ok) {
+      const data = await res.json();
+      return data.voices || [];
+    }
+  } catch (e) {}
+  return lang ? VOICES.filter(v => v.language === lang) : VOICES;
+}
+
+export async function fetchHistory(): Promise<HistoryItem[]> {
+  try {
+    const res = await fetch("/api/history");
+    if (res.ok) {
+      const data = await res.json();
+      return data.history || [];
+    }
+  } catch (e) {}
+  return [];
+}
+

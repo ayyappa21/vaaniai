@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { API_ENDPOINTS } from "@/lib/apiConfig";
 
 const SCRIPT_RANGES = [
   { code: "te", name: "Telugu", start: 0x0c00, end: 0x0c7f, native: "తెలుగు", script: "Telugu", is_rtl: false },
@@ -18,12 +19,11 @@ export async function POST(req: NextRequest) {
   const text: string = body.text || "";
 
   try {
-    const backendUrl = (process.env.BACKEND_URL || process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000").replace(/\/$/, "");
-    const res = await fetch(`${backendUrl}/api/detect-language`, {
+    const res = await fetch(API_ENDPOINTS.detectLanguage(), {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ text }),
-      signal: AbortSignal.timeout(4000),
+      signal: AbortSignal.timeout(6000),
     });
     if (res.ok) {
       return NextResponse.json(await res.json());

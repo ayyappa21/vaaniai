@@ -1,17 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
 import { VOICES } from "@/lib/data";
+import { API_ENDPOINTS } from "@/lib/apiConfig";
 
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
-  const lang = searchParams.get("language");
+  const lang = searchParams.get("language") || undefined;
 
   try {
-    const backendUrl = (process.env.BACKEND_URL || process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000").replace(/\/$/, "");
-    const url = lang
-      ? `${backendUrl}/api/voices?language=${lang}`
-      : `${backendUrl}/api/voices`;
+    const url = API_ENDPOINTS.voices(lang);
     const res = await fetch(url, {
-      signal: AbortSignal.timeout(4000),
+      signal: AbortSignal.timeout(6000),
       cache: "no-store",
     });
     if (res.ok) {

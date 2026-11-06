@@ -138,7 +138,7 @@ export default function TechnologyPage() {
 
           {/* ASCII / Visual Flow Representation */}
           <div className="p-4 rounded-xl bg-slate-900 text-slate-200 font-mono text-xs overflow-x-auto space-y-2">
-            <div className="text-indigo-400 font-bold">// Data Flow Pipeline:</div>
+            <div className="text-indigo-400 font-bold">{"// Data Flow Pipeline:"}</div>
             <div>[Raw Indic Script] ➔ [Language Detector] ➔ [Numeral/Date Normalizer] ➔ [Prosodic Marker Engine] ➔ [Neural Acoustic Model] ➔ [HiFi-GAN Audio Output + JSON Timestamps]</div>
           </div>
         </div>

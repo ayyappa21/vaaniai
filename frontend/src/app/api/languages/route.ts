@@ -1,11 +1,11 @@
 import { NextResponse } from "next/server";
 import { LANGUAGES } from "@/lib/data";
+import { API_ENDPOINTS } from "@/lib/apiConfig";
 
 export async function GET() {
   try {
-    const backendUrl = (process.env.BACKEND_URL || process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000").replace(/\/$/, "");
-    const res = await fetch(`${backendUrl}/api/languages`, {
-      signal: AbortSignal.timeout(4000),
+    const res = await fetch(API_ENDPOINTS.languages(), {
+      signal: AbortSignal.timeout(6000),
       cache: "no-store",
     });
     if (res.ok) {
