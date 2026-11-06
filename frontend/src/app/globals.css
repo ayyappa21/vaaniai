@@ -1,0 +1,300 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-heading: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    
+    /* Indic scripts font family fallbacks */
+    --font-telugu: 'Noto Sans Telugu', system-ui, sans-serif;
+    --font-devanagari: 'Noto Sans Devanagari', system-ui, sans-serif;
+    --font-tamil: 'Noto Sans Tamil', system-ui, sans-serif;
+    --font-kannada: 'Noto Sans Kannada', system-ui, sans-serif;
+    --font-malayalam: 'Noto Sans Malayalam', system-ui, sans-serif;
+    --font-bengali: 'Noto Sans Bengali', system-ui, sans-serif;
+    --font-gujarati: 'Noto Sans Gujarati', system-ui, sans-serif;
+    --font-gurmukhi: 'Noto Sans Gurmukhi', system-ui, sans-serif;
+    --font-oriya: 'Noto Sans Oriya', system-ui, sans-serif;
+    --font-urdu: 'Noto Nastaliq Urdu', serif;
+
+    /* High-contrast Theme tokens */
+    --brand-indigo: #4f46e5;
+    --brand-violet: #7c3aed;
+    --brand-amber: #f59e0b;
+    --brand-emerald: #10b981;
+  }
+}
+
+/* Base focus styles for accessibility */
+:focus-visible {
+  outline: 3px solid #f59e0b;
+  outline-offset: 3px;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(99, 102, 241, 0.4);
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(79, 70, 229, 0.8);
+}
+
+/* Tactile 3D Buttons for ultra-friendly interaction */
+.btn-tactile {
+  transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.12), 0 8px 16px -4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-tactile:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 rgba(0, 0, 0, 0.14), 0 12px 20px -4px rgba(0, 0, 0, 0.15);
+}
+
+.btn-tactile:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* Giant Green Listen Button */
+.btn-listen-giant {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  box-shadow: 0 6px 0 #047857, 0 12px 24px -6px rgba(16, 185, 129, 0.5);
+  transition: all 0.15s ease-out;
+}
+
+.btn-listen-giant:hover {
+  background: linear-gradient(135deg, #34d399 0%, #059669 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 0 #047857, 0 16px 28px -6px rgba(16, 185, 129, 0.6);
+}
+
+.btn-listen-giant:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 #047857;
+}
+
+/* Glassmorphism utility classes */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(226, 232, 240, 0.95);
+  box-shadow: 0 12px 36px -8px rgba(0, 0, 0, 0.08);
+}
+
+.dark .glass-panel {
+  background: rgba(15, 23, 42, 0.88);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(51, 65, 85, 0.7);
+  box-shadow: 0 12px 36px -8px rgba(0, 0, 0, 0.4);
+}
+
+.glass-dropdown {
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(226, 232, 240, 0.95);
+}
+
+.dark .glass-dropdown {
+  background: rgba(15, 23, 42, 0.98);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(51, 65, 85, 0.85);
+}
+
+/* Friendly Indian Heritage Ambient Glow */
+.hero-gradient-mesh {
+  background: radial-gradient(circle at 15% 20%, rgba(245, 158, 11, 0.16) 0%, transparent 45%),
+              radial-gradient(circle at 85% 25%, rgba(79, 70, 229, 0.15) 0%, transparent 45%),
+              radial-gradient(circle at 50% 80%, rgba(16, 185, 129, 0.12) 0%, transparent 50%);
+}
+
+.dark .hero-gradient-mesh {
+  background: radial-gradient(circle at 15% 20%, rgba(245, 158, 11, 0.22) 0%, transparent 45%),
+              radial-gradient(circle at 85% 25%, rgba(79, 70, 229, 0.25) 0%, transparent 45%),
+              radial-gradient(circle at 50% 80%, rgba(16, 185, 129, 0.18) 0%, transparent 50%);
+}
+
+/* Audio Karaoke Highlight with Big Amber Pill */
+.karaoke-word-active {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: #ffffff !important;
+  border-radius: 8px;
+  padding: 2px 8px;
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.7);
+  transform: scale(1.1);
+  display: inline-block;
+  transition: all 0.12s cubic-bezier(0.16, 1, 0.3, 1);
+  font-weight: 800;
+}
+
+/* Card hover animation */
+.card-hover-friendly {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s;
+}
+
+.card-hover-friendly:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+}
+
+/* Modal Fade-in & Scale Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Marquee continuous scroll */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 35s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Soundwave bar bounce */
+@keyframes soundwave {
+  0%, 100% { height: 8px; opacity: 0.6; }
+  50% { height: 32px; opacity: 1; }
+}
+
+.soundwave-bar {
+  animation: soundwave 1.2s ease-in-out infinite;
+}
+
+/* Pulsing radar mic effect */
+@keyframes pulseRing {
+  0% { transform: scale(0.95); opacity: 0.9; }
+  50% { transform: scale(1.25); opacity: 0.2; }
+  100% { transform: scale(0.95); opacity: 0.9; }
+}
+
+.animate-pulse-ring {
+  animation: pulseRing 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Range Slider Styling */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 8px;
+  background: #cbd5e1;
+  border-radius: 9999px;
+  outline: none;
+  transition: background 0.2s;
+}
+
+.dark input[type="range"] {
+  background: #334155;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #f59e0b;
+  cursor: pointer;
+  box-shadow: 0 3px 8px rgba(245, 158, 11, 0.5);
+  border: 3px solid #ffffff;
+  transition: transform 0.15s, background 0.15s;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.25);
+  background: #d97706;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #f59e0b;
+  cursor: pointer;
+  border: 3px solid #ffffff;
+  box-shadow: 0 3px 8px rgba(245, 158, 11, 0.5);
+  transition: transform 0.15s, background 0.15s;
+}
+
+/* RTL Urdu script support */
+[dir="rtl"] {
+  text-align: right;
+  direction: rtl;
+  font-family: 'Noto Nastaliq Urdu', serif;
+}
+
+/* Indic Typography Enhancements: Prevent vowel/diacritic clipping */
+[lang="te"], [lang="kn"], [lang="ml"], [lang="ta"], [lang="hi"], [lang="mr"], [lang="bn"], [lang="gu"], [lang="pa"], [lang="or"] {
+  line-height: 1.85;
+}
+
+/* Glowing Listen Aura */
+.pulse-listen {
+  animation: pulseAura 2.2s infinite;
+}
+
+@keyframes pulseAura {
+  0% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 16px rgba(16, 185, 129, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  }
+}
+
+/* Glyph Emblem 3D Badge */
+.glyph-emblem {
+  box-shadow: 0 8px 16px -4px rgba(79, 70, 229, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.3);
+}
+
+/* Safe area for mobile devices */
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 1rem);
+}
+
+/* Motion preference override */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

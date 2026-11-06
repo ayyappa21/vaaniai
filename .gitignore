@@ -1,0 +1,48 @@
+# Dependencies
+node_modules/
+frontend/node_modules/
+backend/venv/
+backend/.venv/
+venv/
+.venv/
+
+# Production Builds
+.next/
+frontend/.next/
+out/
+frontend/out/
+build/
+dist/
+*.tsbuildinfo
+frontend/*.tsbuildinfo
+
+# Python
+__pycache__/
+*/__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Environment & Secrets (NEVER COMMIT)
+.env
+.env.*
+!.env.example
+frontend/.env
+frontend/.env.*
+!frontend/.env.example
+backend/.env
+backend/.env.*
+!backend/.env.example
+
+# OS & Temp
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.wav
+*.mp3
+*.aiff
+vaaniai.zip
+.vercel
+frontend/.vercel
